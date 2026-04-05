@@ -1,0 +1,92 @@
+{
+  "name": "Tharun Kumar Senthilkumar",
+  "location": "West Lafayette, IN 47906",
+  "email": "tharunsenthilkumar308@gmail.com",
+  "github": "https://www.github.com/tharunS123",
+  "education": [
+    {
+      "institution": "Purdue University, College of Science",
+      "location": "West Lafayette, IN",
+      "degree": "Bachelor of Science",
+      "major": "Computer Science",
+      "expectedGraduation": "May 2028"
+    }
+  ],
+  "experience": [
+    {
+      "organization": "The Data Mine – Purdue University",
+      "location": "Indianapolis, IN",
+      "roles": [
+        {
+          "title": "Undergraduate Data Science Researcher",
+          "client": "Dream Center Indianapolis",
+          "startDate": "Aug 2025",
+          "endDate": "Dec 2025",
+          "description": "Collaborated and analyzed program data for the Building Pathways to Prosperity initiative to measure its effectiveness in moving single mothers and ALICE families toward self-sufficiency. Highlighted the economic and social benefits of the program, including reduced reliance on government aid and long-term community impact."
+        },
+        {
+          "title": "Undergraduate Student Researcher",
+          "client": "Corteva Agriscience",
+          "startDate": null,
+          "endDate": null,
+          "description": "Developed an industry-focused chatbot using LangGraph, FastAPI, React/TypeScript, and OpenAI APIs. Built a retrieval pipeline that searched internal data using vector embeddings and returned relevant context for answer generation, while leveraging OpenAI to format responses into user-friendly outputs. Contributed to both backend and frontend development to deliver a full-stack application.",
+          "techStack": ["LangGraph", "FastAPI", "React", "TypeScript", "OpenAI APIs", "Vector Embeddings"]
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Easy Chat",
+      "association": "Purdue University – CS180",
+      "description": "A Java-based social networking application allowing users to interact with friends, create posts, and manage profiles. Uses a Client-Server architecture with Socket programming for communication.",
+      "techStack": ["Java", "Socket Programming", "Client-Server Architecture"],
+      "github": "https://www.github.com/tharunS123/Easy-Chat"
+    },
+    {
+      "name": "Signalist",
+      "description": "Web application providing users with a personalized and insightful view of the stock market. Delivers real-time market data, personalized news, and user-specific investment insights.",
+      "techStack": ["Next.js", "React", "Tailwind CSS", "AI"],
+      "github": "https://github.com/tharunS123/stockapp"
+    }
+  ],
+  "leadershipAndInvolvement": [
+    {
+      "organization": "HACKINDY Hackathon, CS Indy Club",
+      "role": "Co-Developer",
+      "project": "Swole Leveling",
+      "description": "Co-developed a fitness app inspired by Solo Leveling. Built a rep-tracking XP system, body-part exercise diagram, and integrated an API-based workout library with GIFs.",
+      "techStack": ["Ionic Framework", "React", "TypeScript", "JavaScript"]
+    },
+    {
+      "organization": "FRC Team 2338 Gear it Forward",
+      "role": "Software Captain",
+      "description": "Led the software sub-team, programming the competition robot using WPILib and Limelight for Vision processing. Planned training and events for new team members.",
+      "techStack": ["WPILib", "Limelight Vision Processing"]
+    }
+  ],
+  "skills": [
+    "Java",
+    "C",
+    "Python",
+    "React.js",
+    "Next.js",
+    "Angular",
+    "Azure",
+    "Full Stack Development",
+    "Data Visualization",
+    "Project Management"
+  ],
+  "volunteerism": [
+    {
+      "organization": "Gear it Forward FIRST Robotics Team 2338",
+      "hours": 15,
+      "description": "Outreach events and WOW week, helping nearby teams with robot building and mock matches."
+    },
+    {
+      "organization": "NTHS (National Tech Honors Society)",
+      "hours": 10,
+      "description": "Volunteered over the course of 2 academic years."
+    }
+  ]
+}
