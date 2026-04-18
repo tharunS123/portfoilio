@@ -10,6 +10,7 @@ import Leadership from "@/components/Leadership";
 import Volunteering from "@/components/Volunteering";
 import Contact from "@/components/Contact";
 import BackgroundEffects from "@/components/BackgroundEffects";
+import { Analytics } from "@vercel/analytics/next"
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
       <Volunteering />
       <Divider />
       <Contact />
+      <Analytics />
     </>
   );
 }
