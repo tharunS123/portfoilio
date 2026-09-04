@@ -1,15 +1,40 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import {
+  Archivo,
+  Bodoni_Moda,
+  Instrument_Sans,
+  JetBrains_Mono,
+  Shantell_Sans,
+} from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const archivo = Archivo({
+  variable: "--font-archivo",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument",
   subsets: ["latin"],
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const shantellSans = Shantell_Sans({
+  variable: "--font-shantell",
   subsets: ["latin"],
   display: "swap",
 });
@@ -41,7 +66,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
+      // Next 16 no longer overrides scroll-behavior during navigation;
+      // this opts back in so the anchor nav stays smooth.
+      data-scroll-behavior="smooth"
+      className={`${archivo.variable} ${bodoni.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} ${shantellSans.variable} antialiased`}
     >
       <body className="min-h-screen">{children}</body>
     </html>

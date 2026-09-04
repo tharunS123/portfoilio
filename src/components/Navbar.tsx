@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { ArrowUpRight, Close, Menu } from "./icons";
 
+// Order mirrors the section order: proof of work first.
 const links = [
-  { href: "#about", label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
+  { href: "#about", label: "About" },
   { href: "#leadership", label: "Leadership" },
 ];
 
@@ -30,87 +30,105 @@ export default function Navbar() {
       });
       setActive(current);
     };
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const scrollTo = (href: string) => {
     setOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.querySelector(href)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[1000] px-6 transition-all duration-350 ${
+      className={`fixed inset-x-0 top-0 z-1000 transition-colors duration-300 ${
         scrolled
-          ? "bg-bg-primary/85 backdrop-blur-xl border-b border-border"
-          : ""
+          ? "border-b border-aqua/10 bg-ink/85 backdrop-blur-xl"
+          : "border-b border-aqua/10"
       }`}
     >
-      <div className="max-w-[1200px] mx-auto flex items-center justify-between h-[72px]">
-        {/* Logo */}
-        <Link
+      <div className="shell flex h-[72px] items-center justify-between md:h-22">
+        {/* Wordmark */}
+        <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center gap-3 font-extrabold text-lg tracking-tight text-text-primary no-underline hover:text-text-primary"
+          className="flex min-h-11 items-center gap-3 no-underline"
         >
-          <Image
-            src="/primiary-logo.png"
-            alt="T Logo"
-            width={36}
-            height={36}
-            className="rounded-md"
-          />
-          <span>
-            THARUN<span className="text-cyan">.</span>
+          <span className="flex size-[34px] items-center justify-center border-[1.5px] border-aqua">
+            <span className="font-display text-[17px] font-black tracking-tight text-aqua">
+              T
+            </span>
           </span>
-        </Link>
+          <span className="font-display text-[17px] font-extrabold tracking-[0.02em] text-paper">
+            THARUN<span className="text-aqua">.</span>
+          </span>
+        </a>
+
+        {/* Desktop links */}
+        <div className="hidden items-center gap-9.5 md:flex">
+          {links.map(({ href, label }) => (
+            <button
+              key={href}
+              onClick={() => scrollTo(href)}
+              className={`cursor-pointer font-mono text-[11.5px] uppercase tracking-[0.14em] transition-colors duration-200 hover:text-aqua ${
+                active === href.slice(1) ? "text-aqua" : "text-pale/58"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+          <button
+            onClick={() => scrollTo("#contact")}
+            className="btn btn-sm bg-aqua text-ink hover:bg-paper"
+          >
+            Let&apos;s Talk
+            <ArrowUpRight />
+          </button>
+        </div>
 
         {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden bg-transparent border-none text-text-primary text-2xl cursor-pointer p-2"
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          className="flex size-11.5 cursor-pointer items-center justify-center border border-aqua/25 text-pale md:hidden"
         >
-          {open ? "✕" : "☰"}
+          {open ? <Close /> : <Menu />}
         </button>
+      </div>
 
-        {/* Links */}
-        <ul
-          className={`list-none flex items-center gap-2 ${
-            open
-              ? "flex flex-col absolute top-[72px] left-0 right-0 bg-bg-primary/97 backdrop-blur-xl p-5 border-b border-border gap-1"
-              : "hidden md:flex"
-          }`}
-        >
-          {links.map(({ href, label }) => (
-            <li key={href}>
+      {/* Mobile sheet */}
+      {open && (
+        <div className="border-t border-aqua/10 bg-ink/97 backdrop-blur-xl md:hidden">
+          <div className="shell flex flex-col py-2">
+            {links.map(({ href, label }) => (
               <button
+                key={href}
                 onClick={() => scrollTo(href)}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-transparent border-none cursor-pointer ${
-                  active === href.slice(1)
-                    ? "text-cyan"
-                    : "text-text-secondary hover:text-cyan hover:bg-cyan/10"
+                className={`flex h-13 cursor-pointer items-center border-b border-aqua/8 text-left font-mono text-xs uppercase tracking-[0.16em] ${
+                  active === href.slice(1) ? "text-aqua" : "text-pale/70"
                 }`}
               >
                 {label}
               </button>
-            </li>
-          ))}
-          <li>
+            ))}
             <button
               onClick={() => scrollTo("#contact")}
-              className="px-5 py-2 rounded-lg text-sm font-semibold bg-gradient-to-br from-cyan to-cyan-dim text-bg-primary cursor-pointer border-none transition-all duration-200 hover:shadow-[0_0_24px_rgba(0,240,181,0.3)] hover:-translate-y-0.5"
+              className="btn btn-md mt-4 mb-3 justify-center bg-aqua text-ink"
             >
               Let&apos;s Talk
+              <ArrowUpRight />
             </button>
-          </li>
-        </ul>
-      </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

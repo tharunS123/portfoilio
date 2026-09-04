@@ -1,69 +1,69 @@
 "use client";
 
-import Reveal from "./Reveal";
-import SectionLabel from "./SectionLabel";
-import Tag from "./Tag";
 import { resumeData } from "@/data/resume";
-
-const tagColors: Array<"cyan" | "purple" | "pink"> = ["cyan", "purple", "pink"];
+import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
+import Tag from "./Tag";
+import { Glow } from "./Texture";
 
 export default function Experience() {
-  const roles = resumeData.experience[0].roles;
+  const { organization, location, roles } = resumeData.experience[0];
 
   return (
-    <section id="experience">
-      <div className="max-w-[1200px] mx-auto px-8 py-24">
-        <Reveal>
-          <SectionLabel>Experience</SectionLabel>
-          <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] font-extrabold tracking-tight mb-3">
-            Where I&apos;ve Made Impact
-          </h2>
-          <p className="text-text-secondary text-lg max-w-[600px] mb-12">
-            Real-world projects that pushed the boundaries of what I thought
-            possible.
-          </p>
-        </Reveal>
+    <section id="experience" className="band relative overflow-hidden bg-ink">
+      <Glow className="top-15 -right-30 h-140 w-140" />
 
-        {/* Timeline */}
-        <div className="relative pl-10">
-          {/* Timeline line */}
-          <div className="absolute left-[7px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan via-purple-bright to-transparent rounded-full" />
+      <div className="shell relative">
+        <SectionHeader
+          label="Experience"
+          title="Where I've Made"
+          accent="Impact"
+          blurb="Real-world projects that pushed the boundaries of what I thought possible."
+          className="mb-14 md:mb-19"
+        />
 
-          {roles.map((role, i) => (
-            <Reveal key={i} delay={i * 150}>
-              <div className="relative mb-10 last:mb-0">
-                {/* Dot */}
-                <div className="absolute -left-[36px] top-1.5 w-4 h-4 rounded-full bg-bg-primary border-[3px] border-cyan shadow-[0_0_12px_rgba(0,240,181,0.3)] z-[2]" />
-
-                {/* Card */}
-                <div className="bg-card border border-border rounded-2xl p-7 transition-all duration-300 hover:border-border-hover hover:shadow-glow hover:translate-x-1">
-                  <div className="flex justify-between items-start gap-3 flex-wrap mb-2">
-                    <h3 className="text-lg font-bold">{role.title}</h3>
-                    <span className="font-mono text-xs text-cyan bg-cyan/10 px-3 py-1 rounded-full whitespace-nowrap">
-                      {role.startDate && role.endDate
-                        ? `${role.startDate} – ${role.endDate}`
-                        : "The Data Mine"}
-                    </span>
-                  </div>
-                  <div className="text-sm text-purple-bright font-medium mb-3">
-                    {role.client} —{" "}
-                    {resumeData.experience[0].organization}
-                  </div>
-                  <p className="text-text-secondary text-sm leading-relaxed mb-4">
-                    {role.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {(role.techStack || []).map((tech, j) => (
-                      <Tag key={tech} color={tagColors[j % 3]}>
-                        {tech}
-                      </Tag>
-                    ))}
-                  </div>
+        {roles.map((role, i) => (
+          <Reveal key={role.title} delay={i * 120}>
+            <article
+              className={`grid gap-8 border-t border-aqua/16 py-9 lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-14 ${
+                i === roles.length - 1 ? "border-b" : ""
+              }`}
+            >
+              {/* Meta */}
+              <div>
+                <div className="font-display text-[13px] font-extrabold uppercase leading-snug tracking-[0.06em] text-paper">
+                  {role.client}
+                </div>
+                <div className="mt-2.5 font-mono text-[10.5px] uppercase leading-[1.7] tracking-[0.12em] text-muted">
+                  {organization}
+                </div>
+                <span className="mt-4 inline-block rounded-[2px] border border-aqua/26 px-3 py-[5px] font-mono text-[10px] uppercase tracking-[0.12em] text-aqua">
+                  {role.startDate && role.endDate
+                    ? `${role.startDate} – ${role.endDate}`
+                    : "The Data Mine"}
+                </span>
+                <div className="mt-3.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+                  {location}
                 </div>
               </div>
-            </Reveal>
-          ))}
-        </div>
+
+              {/* Content */}
+              <div>
+                <h3 className="mb-4 font-display text-2xl font-extrabold leading-[1.08] tracking-[-0.02em] text-paper md:text-[34px]">
+                  {role.title}
+                </h3>
+                <p className="mb-5.5 max-w-200 text-[15.5px] leading-[1.68] text-pale/66 text-pretty">
+                  {role.description}
+                </p>
+                <div className="flex flex-wrap gap-1.75">
+                  {(role.techStack || []).map((tech) => (
+                    <Tag key={tech}>{tech}</Tag>
+                  ))}
+                </div>
+              </div>
+            </article>
+          </Reveal>
+        ))}
       </div>
     </section>
   );

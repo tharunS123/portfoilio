@@ -1,10 +1,25 @@
 "use client";
 
-export default function SectionLabel({ children }: { children: string }) {
+export default function SectionLabel({
+  children,
+  tone = "dark",
+}: {
+  children: string;
+  /** "dark" = on ink/deep grounds, "light" = on the paper bands. */
+  tone?: "dark" | "light";
+}) {
   return (
-    <span className="inline-flex items-center gap-2 font-mono text-xs font-medium text-cyan uppercase tracking-widest mb-3">
-      <span className="w-5 h-0.5 bg-cyan rounded-full" />
-      {children}
+    <span className="mb-5 flex items-center gap-3">
+      <span
+        className={`h-px w-6.5 ${tone === "dark" ? "bg-aqua" : "bg-aqua-deep"}`}
+      />
+      <span
+        className={`font-mono text-[11px] font-medium uppercase tracking-[0.2em] ${
+          tone === "dark" ? "text-aqua" : "text-aqua-deep"
+        }`}
+      >
+        {children}
+      </span>
     </span>
   );
 }

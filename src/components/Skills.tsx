@@ -1,45 +1,49 @@
 "use client";
 
-import Reveal from "./Reveal";
-import SectionLabel from "./SectionLabel";
 import { resumeData } from "@/data/resume";
+import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
+import { Glow } from "./Texture";
+import { Cloud, Code, Monitor, Target } from "./icons";
 
 const categories = [
-  { key: "languages" as const, icon: "⌨️", title: "Languages" },
-  { key: "frameworks" as const, icon: "🖥️", title: "Frameworks" },
-  { key: "cloud" as const, icon: "☁️", title: "Cloud & Tools" },
-  { key: "domains" as const, icon: "🎯", title: "Domains" },
+  { key: "languages" as const, icon: Code, title: "Languages" },
+  { key: "frameworks" as const, icon: Monitor, title: "Frameworks" },
+  { key: "cloud" as const, icon: Cloud, title: "Cloud & Tools" },
+  { key: "domains" as const, icon: Target, title: "Domains" },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills">
-      <div className="max-w-[1200px] mx-auto px-8 py-24">
-        <Reveal>
-          <SectionLabel>Skills</SectionLabel>
-          <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] font-extrabold tracking-tight mb-3">
-            My Tech Stack
-          </h2>
-          <p className="text-text-secondary text-lg max-w-[600px] mb-12">
-            Technologies and tools I use to bring ideas to life.
-          </p>
-        </Reveal>
+    <section id="skills" className="band relative overflow-hidden bg-ink">
+      <Glow className="-top-20 -left-30 h-140 w-155" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="shell relative">
+        <SectionHeader
+          label="Skills"
+          title="My Tech"
+          accent="Stack"
+          blurb="Technologies and tools I use to bring ideas to life."
+          className="mb-12 md:mb-16"
+        />
+
+        <div className="grid gap-8.5 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((cat, i) => (
-            <Reveal key={cat.key} delay={i * 100}>
-              <div className="bg-card border border-border rounded-2xl p-7 transition-all duration-300 hover:border-border-hover hover:shadow-glow hover:-translate-y-0.5 h-full">
-                <div className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4 flex items-center gap-2">
-                  <span className="text-base">{cat.icon}</span>
-                  {cat.title}
+            <Reveal key={cat.key} delay={i * 90}>
+              <div className="border-t-[1.5px] border-aqua/34 pt-5.5">
+                <div className="mb-5 flex items-center gap-2.5 text-aqua">
+                  <cat.icon />
+                  <span className="font-mono text-[10.5px] uppercase tracking-[0.18em]">
+                    {cat.title}
+                  </span>
                 </div>
-                <div className="flex flex-wrap gap-2.5">
+                <div className="flex flex-wrap gap-2">
                   {resumeData.skills[cat.key].map((skill) => (
                     <span
                       key={skill}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-md text-sm font-medium bg-cyan/[0.04] border border-border text-text-primary transition-all duration-200 hover:border-cyan hover:bg-cyan/10 hover:text-cyan hover:-translate-y-px cursor-default"
+                      className="inline-flex items-center gap-2 rounded-[2px] border border-aqua/20 bg-aqua/5 px-3.5 py-2.25 text-sm font-medium text-pale transition-colors duration-200 hover:border-aqua/50 hover:bg-aqua/10"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan" />
+                      <span className="size-[5px] shrink-0 rounded-full bg-aqua" />
                       {skill}
                     </span>
                   ))}

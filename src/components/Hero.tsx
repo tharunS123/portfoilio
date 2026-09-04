@@ -1,8 +1,15 @@
 "use client";
 
-import Image from "next/image";
-import TypedRole from "./TypedRole";
 import { resumeData } from "@/data/resume";
+import TypedRole from "./TypedRole";
+import { Glow, TopoRings } from "./Texture";
+import { ArrowDown, ArrowRight, Cap, Code, Cpu, GitHub, Mail, MapPin } from "./icons";
+
+const credentials = [
+  { icon: Cap, title: "Purdue CS '28", sub: "College of Science" },
+  { icon: Code, title: "Full-Stack Dev", sub: "Development" },
+  { icon: Cpu, title: "AI/ML Researcher", sub: "The Data Mine" },
+];
 
 export default function Hero() {
   const scrollTo = (id: string) => {
@@ -10,105 +17,117 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden z-[1]" id="hero">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/abstract-hero-background.png"
-          alt="Abstract background"
-          fill
-          className="object-cover opacity-25"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-primary/30 via-bg-primary/60 to-bg-primary" />
-      </div>
+    <section
+      id="hero"
+      className="relative flex min-h-svh flex-col justify-center overflow-hidden bg-ink pt-[72px] md:pt-22"
+    >
+      <TopoRings className="opacity-60" />
+      <Glow className="-top-45 -right-35 h-155 w-180" />
 
-      {/* Content */}
-      <div className="relative z-[2] max-w-[1200px] mx-auto px-8 pt-[120px] pb-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Text */}
-        <div className="animate-fade-in-up lg:order-1 order-2 text-center lg:text-left">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-cyan/10 border border-cyan/15 rounded-full font-mono text-xs text-cyan tracking-wider uppercase mb-6">
-            <span className="w-1.5 h-1.5 bg-cyan rounded-full animate-pulse" />
-            Open to opportunities
-          </div>
-
-          <h1 className="text-[clamp(2.5rem,5vw,4rem)] font-black leading-[1.1] tracking-tight mb-6">
-            Hi, I&apos;m
-            <br />
-            <span className="bg-gradient-to-br from-cyan via-purple-bright to-pink-500 bg-clip-text text-transparent">
-              Tharun Kumar
+      <div className="shell relative z-2 py-14 md:py-19">
+        {/* Status row */}
+        <div className="mb-9 flex flex-wrap items-center gap-x-6.5 gap-y-3 md:mb-11">
+          <span className="flex items-center gap-2.5 rounded-[2px] border border-aqua/32 px-3.5 py-2">
+            <span className="size-1.5 animate-pulse-dot rounded-full bg-aqua" />
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-aqua">
+              Open to opportunities
             </span>
-            <br />
+          </span>
+          <span className="flex items-center gap-1.5 text-muted">
+            <MapPin />
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em]">
+              {resumeData.location}
+            </span>
+          </span>
+          <span className="hidden h-px flex-grow bg-gradient-to-r from-aqua/28 to-transparent lg:block" />
+        </div>
+
+        {/* Name */}
+        <div className="mb-7">
+          <span className="mb-1.5 block font-serif text-xl italic text-muted sm:text-2xl md:text-[26px]">
+            Hi, I&apos;m
+          </span>
+          <h1 className="font-display text-[clamp(3.25rem,9vw,8rem)] font-black uppercase leading-[0.86] tracking-[-0.035em] text-paper">
+            Tharun Kumar
+          </h1>
+          <h1 className="font-serif text-[clamp(2.1rem,6.2vw,8rem)] font-normal uppercase leading-[0.92] tracking-[-0.015em] text-aqua">
             Senthilkumar
           </h1>
-
-          <TypedRole />
-
-          <p className="text-lg text-text-secondary max-w-[520px] mx-auto lg:mx-0 mb-8 leading-relaxed">
-            Full-Stack Developer &amp; Data Science Researcher at Purdue
-            University. I build intelligent applications that bridge the gap
-            between data and user experience.
-          </p>
-
-          {/* Buttons */}
-          <div className="flex gap-4 flex-wrap justify-center lg:justify-start">
-            <button
-              onClick={() => scrollTo("#projects")}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-lg text-sm font-semibold bg-gradient-to-br from-cyan to-cyan-dim text-bg-primary border-none cursor-pointer shadow-[0_4px_20px_rgba(0,240,181,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,240,181,0.35)]"
-            >
-              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
-              View Projects
-            </button>
-            <button
-              onClick={() => scrollTo("#contact")}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-lg text-sm font-semibold bg-transparent text-text-primary border border-border-hover cursor-pointer transition-all duration-300 hover:bg-cyan/10 hover:border-cyan hover:text-cyan hover:-translate-y-0.5"
-            >
-              <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
-              Get in Touch
-            </button>
-            <a
-              href={resumeData.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-lg text-sm font-semibold bg-transparent text-text-primary border border-border-hover cursor-pointer transition-all duration-300 hover:bg-cyan/10 hover:border-cyan hover:text-cyan hover:-translate-y-0.5 no-underline"
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
-              GitHub
-            </a>
-          </div>
         </div>
 
-        {/* Avatar */}
-        <div className="flex justify-center lg:order-2 order-1 animate-fade-in-up-delay">
-          <div className="relative w-[280px] h-[280px] lg:w-[380px] lg:h-[380px]">
-            {/* Spinning ring */}
-            <div className="absolute -inset-1 rounded-full bg-conic-gradient opacity-60 animate-spin-slow" />
-            <div className="absolute -inset-1 rounded-full bg-conic-gradient opacity-30 blur-[30px] animate-spin-slow" />
-
-            <Image
-              src="/developer-avatar.png"
-              alt="Tharun Kumar"
-              fill
-              className="rounded-full object-cover relative z-[1] border-4 border-bg-primary"
-              priority
-            />
-
-            {/* Floating stats */}
-            <div className="hero-stat top-[10%] -right-5 animate-float hidden sm:flex">
-              <span>🎓</span>
-              <span className="text-cyan font-semibold">Purdue CS &apos;28</span>
+        <div className="flex flex-col items-start justify-between gap-12 lg:flex-row lg:items-end lg:gap-20">
+          {/* Role, blurb, CTAs */}
+          <div className="max-w-[640px]">
+            <div className="mb-4.5">
+              <TypedRole />
             </div>
-            <div className="hero-stat bottom-[15%] -left-[30px] animate-float-delay-1 hidden sm:flex">
-              <span>💻</span>
-              <span className="text-cyan font-semibold">Full-Stack Dev</span>
-            </div>
-            <div className="hero-stat bottom-[5%] -right-[10px] animate-float-delay-2 hidden sm:flex">
-              <span>🤖</span>
-              <span className="text-cyan font-semibold">AI/ML Researcher</span>
+            <p className="mb-8.5 text-base leading-[1.62] text-pale/72 text-pretty sm:text-[17.5px]">
+              Full-Stack Developer &amp; Data Science Researcher at Purdue
+              University. I build intelligent applications that bridge the gap
+              between data and user experience.
+            </p>
+
+            <div className="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:gap-3">
+              <button
+                onClick={() => scrollTo("#projects")}
+                className="btn btn-md justify-center bg-aqua text-ink hover:bg-paper"
+              >
+                View Projects
+                <ArrowRight />
+              </button>
+              <button
+                onClick={() => scrollTo("#contact")}
+                className="btn btn-md justify-center border border-aqua/34 text-pale hover:border-aqua hover:text-aqua"
+              >
+                <Mail size={14} />
+                Get in Touch
+              </button>
+              <a
+                href={resumeData.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-md justify-center border border-aqua/34 text-pale no-underline hover:border-aqua hover:text-aqua"
+              >
+                <GitHub />
+                GitHub
+              </a>
             </div>
           </div>
+
+          {/* Credential panel */}
+          <div className="grid w-full grid-cols-1 gap-px border border-aqua/14 bg-aqua/14 sm:grid-cols-3 lg:w-auto lg:min-w-75 lg:grid-cols-1">
+            {credentials.map(({ icon: Icon, title, sub }) => (
+              <div key={title} className="flex items-center gap-3.5 bg-deep px-5 py-4">
+                <Icon className="shrink-0 text-aqua" />
+                <div>
+                  <div className="font-display text-[15px] font-extrabold text-paper">
+                    {title}
+                  </div>
+                  <div className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+                    {sub}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+      </div>
+
+      {/* Scroll cue */}
+      <div className="shell relative z-3 hidden items-center gap-4.5 pb-10.5 lg:flex">
+        <button
+          onClick={() => scrollTo("#experience")}
+          className="flex cursor-pointer items-center gap-2.5 text-muted transition-colors hover:text-aqua"
+        >
+          <ArrowDown />
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em]">
+            Experience
+          </span>
+        </button>
+        <span className="h-px flex-grow bg-gradient-to-r from-aqua/24 to-aqua/4" />
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+          Purdue University
+        </span>
       </div>
     </section>
   );

@@ -43,9 +43,9 @@ export default function TypedRole() {
   }, [charIndex, isDeleting, roleIndex]);
 
   return (
-    <span className="block font-mono text-base text-text-secondary min-h-[1.5em] mt-2">
+    <span className="block min-h-[1.5em] font-mono text-sm text-aqua sm:text-[15px]">
       {">"} {text}
-      <span className="animate-pulse">|</span>
+      <span className="animate-caret">|</span>
     </span>
   );
 }

@@ -1,53 +1,64 @@
 "use client";
 
-import Reveal from "./Reveal";
-import SectionLabel from "./SectionLabel";
-import Tag from "./Tag";
 import { resumeData } from "@/data/resume";
+import Reveal from "./Reveal";
+import SectionHeader from "./SectionHeader";
+import Tag from "./Tag";
+import { TopoRings } from "./Texture";
+import { Bolt, Robot } from "./icons";
 
-const tagColors: Array<"cyan" | "purple" | "pink"> = ["cyan", "purple", "pink"];
+const icons = [Bolt, Robot];
 
 export default function Leadership() {
   return (
-    <section id="leadership">
-      <div className="max-w-[1200px] mx-auto px-8 py-24">
-        <Reveal>
-          <SectionLabel>Leadership</SectionLabel>
-          <h2 className="text-[clamp(1.8rem,3vw,2.5rem)] font-extrabold tracking-tight mb-3">
-            Beyond the Code
-          </h2>
-          <p className="text-text-secondary text-lg max-w-[600px] mb-12">
-            Leadership roles and community involvement that shape who I am.
-          </p>
-        </Reveal>
+    <section
+      id="leadership"
+      className="relative overflow-hidden bg-paper pt-16 text-ink md:pt-26"
+    >
+      <TopoRings tone="ink" className="opacity-70" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {resumeData.leadership.map((item, i) => (
-            <Reveal key={i} delay={i * 100}>
-              <div className="group bg-card border border-border rounded-2xl p-7 transition-all duration-300 hover:border-border-hover hover:-translate-y-1 hover:shadow-[0_25px_60px_-12px_rgba(0,0,0,0.5)] relative overflow-hidden h-full">
-                {/* Bottom gradient on hover */}
-                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r from-purple-bright to-pink-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="shell relative">
+        <SectionHeader
+          label="Leadership"
+          title="Beyond the"
+          accent="Code"
+          blurb="Leadership roles and community involvement that shape who I am."
+          tone="light"
+          className="mb-11 md:mb-15"
+        />
 
-                <div className="text-xs font-semibold text-purple-bright uppercase tracking-wider mb-1">
-                  {item.role}
-                </div>
-                <h3 className="text-lg font-bold mb-1">{item.organization}</h3>
-                <div className="font-mono text-xs text-cyan mb-3">
-                  Project: {item.project}
-                </div>
-                <p className="text-text-secondary text-sm leading-relaxed mb-4">
-                  {item.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {item.techStack.map((tech, j) => (
-                    <Tag key={tech} color={tagColors[j % 3]}>
-                      {tech}
-                    </Tag>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
-          ))}
+        <div className="grid gap-7 md:grid-cols-2">
+          {resumeData.leadership.map((item, i) => {
+            const Icon = icons[i % icons.length];
+            return (
+              <Reveal key={item.organization} delay={i * 100}>
+                <article className="flex h-full flex-col border border-ink/16 bg-paper/62 p-7 transition-colors duration-300 hover:border-ink/35 md:p-8.5">
+                  <div className="mb-4.5 flex items-center justify-between gap-4">
+                    <span className="rounded-[2px] bg-aqua-deep px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-paper">
+                      {item.role}
+                    </span>
+                    <Icon className="text-aqua-deep" />
+                  </div>
+                  <h3 className="mb-2 font-display text-2xl font-black uppercase leading-[1.08] tracking-[-0.024em] text-ink md:text-[27px]">
+                    {item.organization}
+                  </h3>
+                  <div className="mb-4.5 font-mono text-[10.5px] uppercase tracking-[0.14em] text-aqua-deep">
+                    Project: {item.project}
+                  </div>
+                  <p className="mb-5.5 flex-grow text-[15.5px] leading-[1.66] text-ink/66 text-pretty">
+                    {item.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.75">
+                    {item.techStack.map((tech) => (
+                      <Tag key={tech} tone="light">
+                        {tech}
+                      </Tag>
+                    ))}
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
