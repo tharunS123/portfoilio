@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  <style>
+    :root {
+      --ink: #041421;
+      --deep: #042630;
+      --slate: #4c7273; --muted: #6f9694; --muted-ink: #3f6263;
+      --aqua: #86b9b0;
+      --deepaqua: #2d6a63;
+      --pale: #d0d6d6;
+      --paper: #eceeed;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--ink); color: var(--pale); font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: var(--deepaqua); text-decoration: none; }
+    a:hover { color: #1f504a; }
+    .display { font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; }
+    .serif { font-family: 'Bodoni Moda', Didot, 'Times New Roman', serif; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; }
+    .eyebrow { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; }
+    .h2 { font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; font-size: 66px; font-weight: 900; line-height: 0.94; letter-spacing: -0.028em; text-transform: uppercase; margin: 0; }
+    .tag-dark { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.06em; color: #86b9b0; border: 1px solid rgba(134,185,176,0.28); padding: 5px 11px; border-radius: 2px; white-space: nowrap; }
+    .tag-light { font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace; font-size: 10.5px; letter-spacing: 0.06em; color: #2d6a63; border: 1px solid rgba(45,106,99,0.30); padding: 5px 11px; border-radius: 2px; white-space: nowrap; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: var(--ink)">
+
+  <!-- ==================== EXPERIENCE (dark) ==================== -->
+  <div style="position: relative; padding: 104px 80px 112px; background: var(--ink); overflow: hidden">
+
+    <div style="position: absolute; top: 60px; right: -120px; width: 560px; height: 560px; background: radial-gradient(circle at center, rgba(134,185,176,0.09), transparent 66%); pointer-events: none"></div>
+
+    <!-- header -->
+    <div style="position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 60px; margin-bottom: 76px">
+      <div style="max-width: 780px">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px">
+          <span style="width: 26px; height: 1.5px; background: var(--aqua)"></span>
+          <span class="eyebrow" style="color: var(--aqua)">Experience</span>
+        </div>
+        <h2 class="h2" style="color: var(--paper)">Where I&#39;ve Made <span class="serif" style="font-weight: 400; letter-spacing: -0.01em; color: var(--aqua)">Impact</span></h2>
+        <p style="margin: 22px 0 0; font-size: 17px; line-height: 1.6; color: rgba(208,214,214,0.62); max-width: 560px; text-wrap: pretty">
+          Real-world projects that pushed the boundaries of what I thought possible.
+        </p>
+      </div>
+    </div>
+
+    <!-- entry 1 -->
+    <div style="position: relative; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 56px; padding: 38px 0; border-top: 1px solid rgba(134,185,176,0.16)">
+      <div>
+        <div class="display" style="font-size: 13px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--paper); line-height: 1.4">Corteva Agriscience</div>
+        <div class="mono" style="font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 9px; line-height: 1.7">The Data Mine –<br>Purdue University</div>
+        <div style="display: inline-block; margin-top: 16px; border: 1px solid rgba(134,185,176,0.26); padding: 5px 12px; border-radius: 2px">
+          <span class="mono" style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aqua)">The Data Mine</span>
+        </div>
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 14px">Indianapolis, IN</div>
+      </div>
+      <div>
+        <h3 class="display" style="margin: 0 0 16px; font-size: 34px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; color: var(--paper)">Undergraduate Student Researcher</h3>
+        <p style="margin: 0 0 22px; font-size: 15.5px; line-height: 1.68; color: rgba(208,214,214,0.66); max-width: 800px; text-wrap: pretty">
+          Developed an industry-focused chatbot using LangGraph, FastAPI, React/TypeScript, and OpenAI APIs. Built a retrieval pipeline that searched internal data using vector embeddings and returned relevant context for answer generation, while leveraging OpenAI to format responses into user-friendly outputs. Contributed to both backend and frontend development to deliver a full-stack application.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 7px">
+          <span class="tag-dark">LangGraph</span>
+          <span class="tag-dark">FastAPI</span>
+          <span class="tag-dark">React</span>
+          <span class="tag-dark">TypeScript</span>
+          <span class="tag-dark">OpenAI APIs</span>
+          <span class="tag-dark">Vector Embeddings</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- entry 2 -->
+    <div style="position: relative; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 56px; padding: 38px 0; border-top: 1px solid rgba(134,185,176,0.16); border-bottom: 1px solid rgba(134,185,176,0.16)">
+      <div>
+        <div class="display" style="font-size: 13px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--paper); line-height: 1.4">Dream Center Indianapolis</div>
+        <div class="mono" style="font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 9px; line-height: 1.7">The Data Mine –<br>Purdue University</div>
+        <div style="display: inline-block; margin-top: 16px; border: 1px solid rgba(134,185,176,0.26); padding: 5px 12px; border-radius: 2px">
+          <span class="mono" style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--aqua)">Aug 2025 – Dec 2025</span>
+        </div>
+        <div class="mono" style="font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 14px">Indianapolis, IN</div>
+      </div>
+      <div>
+        <h3 class="display" style="margin: 0 0 16px; font-size: 34px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; color: var(--paper)">Undergraduate Data Science Researcher</h3>
+        <p style="margin: 0 0 22px; font-size: 15.5px; line-height: 1.68; color: rgba(208,214,214,0.66); max-width: 800px; text-wrap: pretty">
+          Collaborated and analyzed program data for the Building Pathways to Prosperity initiative to measure its effectiveness in moving single mothers and ALICE families toward self-sufficiency. Highlighted the economic and social benefits of the program, including reduced reliance on government aid and long-term community impact.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 7px">
+          <span class="tag-dark">Data Analysis</span>
+          <span class="tag-dark">Impact Research</span>
+          <span class="tag-dark">Data Visualization</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PROJECTS (paper) ==================== -->
+  <div style="position: relative; padding: 104px 80px 112px; background: var(--paper); color: var(--ink); overflow: hidden">
+
+    <svg viewBox="0 0 1440 1100" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.6; pointer-events: none">
+      <g fill="none" stroke="#4c7273" stroke-opacity="0.13" stroke-width="1">
+        <ellipse cx="1300" cy="180" rx="360" ry="230" />
+        <ellipse cx="1300" cy="180" rx="280" ry="172" />
+        <ellipse cx="1300" cy="180" rx="200" ry="116" />
+      </g>
+    </svg>
+
+    <!-- header -->
+    <div style="position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 60px; margin-bottom: 70px">
+      <div style="max-width: 780px">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px">
+          <span style="width: 26px; height: 1.5px; background: var(--deepaqua)"></span>
+          <span class="eyebrow" style="color: var(--deepaqua)">Projects</span>
+        </div>
+        <h2 class="h2" style="color: var(--ink)">Things I&#39;ve <span class="serif" style="font-weight: 400; letter-spacing: -0.01em; color: var(--deepaqua)">Built</span></h2>
+        <p style="margin: 22px 0 0; font-size: 17px; line-height: 1.6; color: rgba(4,20,33,0.62); max-width: 560px; text-wrap: pretty">
+          A selection of projects that showcase my passion for building meaningful software.
+        </p>
+      </div>
+    </div>
+
+    <!-- project rows -->
+    <div style="position: relative; display: flex; flex-direction: column">
+
+      <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) 320px; gap: 40px; align-items: start; padding: 36px 0; border-top: 1px solid rgba(4,20,33,0.16)">
+        <div class="serif" style="font-size: 54px; font-weight: 400; color: rgba(4,20,33,0.22); line-height: 0.9">01</div>
+        <div>
+          <h3 class="display" style="margin: 0 0 6px; font-size: 40px; font-weight: 900; letter-spacing: -0.028em; line-height: 1; text-transform: uppercase; color: var(--ink)">Easy Chat</h3>
+          <div class="mono" style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--deepaqua); margin-bottom: 16px">Purdue University – CS180</div>
+          <p style="margin: 0 0 20px; font-size: 15.5px; line-height: 1.66; color: rgba(4,20,33,0.66); max-width: 640px; text-wrap: pretty">
+            A Java-based social networking application allowing users to interact with friends, create posts, and manage profiles. Uses a Client-Server architecture with Socket programming for communication.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 7px">
+            <span class="tag-light">Java</span>
+            <span class="tag-light">Socket Programming</span>
+            <span class="tag-light">Client-Server Architecture</span>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; padding-top: 8px">
+          <div style="display: flex; align-items: center; gap: 9px; border: 1px solid rgba(4,20,33,0.22); padding: 12px 20px; border-radius: 2px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#041421"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.7.8.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span class="display" style="font-size: 12px; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink)">GitHub</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#041421" stroke-width="2.4" stroke-linecap="square"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) 320px; gap: 40px; align-items: start; padding: 36px 0; border-top: 1px solid rgba(4,20,33,0.16)">
+        <div class="serif" style="font-size: 54px; font-weight: 400; color: rgba(4,20,33,0.22); line-height: 0.9">02</div>
+        <div>
+          <h3 class="display" style="margin: 0 0 6px; font-size: 40px; font-weight: 900; letter-spacing: -0.028em; line-height: 1; text-transform: uppercase; color: var(--ink)">Signalist</h3>
+          <div class="mono" style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--deepaqua); margin-bottom: 16px">Personal Project</div>
+          <p style="margin: 0 0 20px; font-size: 15.5px; line-height: 1.66; color: rgba(4,20,33,0.66); max-width: 640px; text-wrap: pretty">
+            Web application providing users with a personalized and insightful view of the stock market. Delivers real-time market data, personalized news, and user-specific investment insights.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 7px">
+            <span class="tag-light">Next.js</span>
+            <span class="tag-light">React</span>
+            <span class="tag-light">Tailwind CSS</span>
+            <span class="tag-light">AI</span>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; padding-top: 8px">
+          <div style="display: flex; align-items: center; gap: 9px; border: 1px solid rgba(4,20,33,0.22); padding: 12px 20px; border-radius: 2px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#041421"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.7.8.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span class="display" style="font-size: 12px; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink)">GitHub</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#041421" stroke-width="2.4" stroke-linecap="square"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr) 320px; gap: 40px; align-items: start; padding: 36px 0; border-top: 1px solid rgba(4,20,33,0.16); border-bottom: 1px solid rgba(4,20,33,0.16)">
+        <div class="serif" style="font-size: 54px; font-weight: 400; color: rgba(4,20,33,0.22); line-height: 0.9">03</div>
+        <div>
+          <h3 class="display" style="margin: 0 0 6px; font-size: 40px; font-weight: 900; letter-spacing: -0.028em; line-height: 1; text-transform: uppercase; color: var(--ink)">Swole Leveling</h3>
+          <div class="mono" style="font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--deepaqua); margin-bottom: 16px">HACKINDY Hackathon</div>
+          <p style="margin: 0 0 20px; font-size: 15.5px; line-height: 1.66; color: rgba(4,20,33,0.66); max-width: 640px; text-wrap: pretty">
+            A gamified fitness app inspired by Solo Leveling. Features a rep-tracking XP system, interactive body-part exercise diagram, and an API-based workout library complete with animated GIF demonstrations.
+          </p>
+          <div style="display: flex; flex-wrap: wrap; gap: 7px">
+            <span class="tag-light">Ionic</span>
+            <span class="tag-light">React</span>
+            <span class="tag-light">TypeScript</span>
+          </div>
+        </div>
+        <div></div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
