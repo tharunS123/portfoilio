@@ -40,6 +40,9 @@ const shantellSans = Shantell_Sans({
 });
 
 export const metadata: Metadata = {
+  // Assumes the Vercel project is named `tharun`, which claims this URL.
+  // Change here if the project is named something else.
+  metadataBase: new URL("https://tharun.vercel.app"),
   title: "Tharun Kumar Senthilkumar — Portfolio",
   description:
     "Portfolio of Tharun Kumar Senthilkumar — Full-Stack Developer, Data Science Researcher, CS @ Purdue University",
