@@ -1,0 +1,48 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html",   "title": "01 · Hero",                          "x": 0,    "y": 0,    "w": 1440, "h": 1024 },
+    { "file": "Work.dc.html",   "title": "02 · Experience + Projects",         "x": 1600, "y": 0,    "w": 1440, "h": 2480 },
+    { "file": "Skills.dc.html", "title": "03 · Skills + About + Education",    "x": 3200, "y": 0,    "w": 1440, "h": 1580 },
+    { "file": "Beyond.dc.html", "title": "04 · Leadership + Volunteering + Contact", "x": 4800, "y": 0, "w": 1440, "h": 2020 },
+    { "file": "Mobile.dc.html", "title": "Mobile · 390",                       "x": 0,    "y": 2680, "w": 390,  "h": 1740 },
+    { "file": "System.dc.html", "title": "Design system",                      "x": 560,  "y": 2680, "w": 1100, "h": 1160 }
+  ],
+  "annotations": [
+    {
+      "id": "direction",
+      "x": 0,
+      "y": -640,
+      "w": 380,
+      "text": "DIRECTION — \"Storm Teal, editorial\"\n\nYour palette swatch sampled exactly (#041421 / #042630 / #4c7273 / #86b9b0 / #d0d6d6) driving the color, and the Lando Norris site driving the structure: oversized display type, dark/light section alternation, topographic line texture, serif+grotesk headline mixing.\n\nType: Archivo 900 (display) + Bodoni Moda (serif accent) + Instrument Sans (body) + JetBrains Mono (labels). Shantell Sans appears exactly once, on \"Something Amazing\"."
+    },
+    {
+      "id": "reorder",
+      "x": 420,
+      "y": -640,
+      "w": 420,
+      "text": "SECTION ORDER — rebuilt for job hunting\n\nWas: Hero, About, Education, Experience, Projects, Skills, Leadership, Volunteering, Contact.\n\nNow: Hero, Experience, Projects, Skills, About + Education, Leadership + Volunteering, Contact.\n\nRecruiters scan for proof of work first, so Experience and Projects move up and About drops below them as context. Nav order follows.\n\nThe hero also surfaces two facts the old site had in data but never showed: your location, and the Purdue credential as a fixed panel rather than floating badges."
+    },
+    {
+      "id": "content-note",
+      "x": 880,
+      "y": -640,
+      "w": 380,
+      "text": "CONTENT — unchanged\n\nEvery headline, paragraph, role description, project blurb, tag and label is verbatim from src/data/resume.ts and the existing components. Nothing added, nothing rewritten.\n\nOne deliberate visual change: all 19 emoji (🎓 💻 🤖 🏫 🚂 ⌨️ 📧 …) are replaced with stroke SVG icons. Emoji render differently per OS and read junior on a portfolio a recruiter opens."
+    },
+    {
+      "id": "mobile-note",
+      "x": 0,
+      "y": 1140,
+      "w": 380,
+      "text": "MOBILE — 390pt\n\nName breaks to three lines, CTAs go full-width stacked, credential panel stays. All hit targets 46–52px. No fake status bar or keyboard — the real OS draws those on top."
+    },
+    {
+      "id": "system-note",
+      "x": 440,
+      "y": 1140,
+      "w": 380,
+      "text": "WHAT CHANGED STRUCTURALLY\n\nRounded cards (2xl radii, glow shadows, gradient bars) → flat 2px-radius surfaces and hairline rules. Cyan/purple/pink tri-gradient → one accent, used sparingly. Cards → editorial rows for Experience and Projects, which scan much faster.\n\nMuted text runs on #6f9694 (dark grounds) and #3f6263 (paper) rather than the raw #4c7273 swatch — the swatch itself only hits 3.0:1 on the dark grounds, below WCAG AA."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}
