@@ -121,8 +121,106 @@ section { position: relative; }
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
-  .btn:hover { transform: translateY(-1px); }
+  /* Hover lift only where a real pointer exists — on touch, :hover sticks
+     after the tap and leaves the button visually stuck in a lifted state. */
+  @media (hover: hover) {
+    .btn:hover { transform: translateY(-1px); }
+  }
+  /* Feedback on press, not on release. This is the whole interaction on a
+     phone, where :hover never fires — without it every button feels dead
+     until the page starts scrolling. */
+  .btn:active {
+    transform: scale(0.97);
+    transition-duration: 100ms;
+  }
   .btn-sm { padding: 0.75rem 1.25rem;  font-size: 0.75rem; }
   .btn-md { padding: 0.9375rem 1.625rem; font-size: 0.78125rem; }
   .btn-lg { padding: 1.125rem 2.5rem;  font-size: 0.875rem; }
+
+  /* Nav links and other bare pressables get the same press response. */
+  .pressable { transition: color 0.2s ease, opacity 0.15s ease, transform 0.15s ease; }
+  .pressable:active { transform: scale(0.96); opacity: 0.75; transition-duration: 100ms; }
+
+  /* Translucent floating chrome. Content scrolls underneath rather than the
+     bar consuming a fixed opaque strip. */
+  /* Do NOT hand-write -webkit-backdrop-filter here. Lightning CSS (Tailwind
+     v4's compiler) auto-prefixes from the browser targets, and a manual
+     prefix makes it emit ONLY the prefixed property, dropping the standard
+     one — which silently kills the blur in Chrome. */
+  .material {
+    background: color-mix(in srgb, var(--color-ink) 82%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+  }
+
+  /* Scroll edge effect: a soft gradient where content passes under the bar,
+     instead of a hard hairline. Only rendered once content actually overlaps. */
+  .scroll-edge::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    height: 24px;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-ink) 55%, transparent),
+      transparent
+    );
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY PREFERENCES
+   Three independent signals, per Apple's guidance. Reduced motion is not
+   "no feedback" — it's a non-vestibular equivalent, so opacity and color
+   changes stay and only travel/oscillation is removed.
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  /* Perpetual motion is the main offender here: the status dot pulses
+     forever and the hero role types/deletes on a loop. Both stop. */
+  .animate-pulse-dot,
+  .animate-caret {
+    animation: none !important;
+  }
+
+  /* Collapse travel, keep the fade. Presses stay responsive. Staggered
+     reveal delays are inline styles, so they need clearing here too —
+     otherwise the cascade of sections still trickles in. */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 150ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn:hover, .btn:active,
+  .pressable:hover, .pressable:active {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  /* Frost the glass into a solid. The blur is decoration; the legibility
+     it costs is not worth defending. */
+  .material {
+    background: var(--color-ink) !important;
+    backdrop-filter: none !important;
+  }
+  .material-paper {
+    background: var(--color-paper) !important;
+    backdrop-filter: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .material {
+    background: var(--color-ink) !important;
+    backdrop-filter: none !important;
+    border-color: var(--color-aqua) !important;
+  }
+  /* Muted copy is the first thing to fail at high contrast — promote it. */
+  .text-muted { color: var(--color-pale) !important; }
+  :focus-visible { outline-width: 3px; }
 }

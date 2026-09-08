@@ -3,6 +3,7 @@
 import { resumeData } from "@/data/resume";
 import TypedRole from "./TypedRole";
 import { Glow, TopoRings } from "./Texture";
+import { scrollToSection } from "@/lib/scroll";
 import { ArrowDown, ArrowRight, Cap, Code, Cpu, GitHub, Mail, MapPin } from "./icons";
 
 const credentials = [
@@ -13,7 +14,7 @@ const credentials = [
 
 export default function Hero() {
   const scrollTo = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection(id);
   };
 
   return (

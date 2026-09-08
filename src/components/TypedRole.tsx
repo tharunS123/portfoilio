@@ -14,8 +14,21 @@ export default function TypedRole() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  // The typing loop is perpetual motion that a CSS media query can't stop,
+  // so the preference is read here and the effect simply doesn't run.
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReducedMotion(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
 
   useEffect(() => {
+    if (reducedMotion) return;
+
     const current = roles[roleIndex];
     let speed = isDeleting ? 30 : 60;
 
@@ -40,7 +53,18 @@ export default function TypedRole() {
     }, speed);
 
     return () => clearTimeout(t);
-  }, [charIndex, isDeleting, roleIndex]);
+  }, [charIndex, isDeleting, roleIndex, reducedMotion]);
+
+  // Reduced motion still gets the information, just without the churn:
+  // every role, listed once, statically.
+  if (reducedMotion) {
+    return (
+      <span className="block min-h-[1.5em] font-mono text-sm text-aqua sm:text-[15px]">
+        {"> "}
+        {roles.join(" · ")}
+      </span>
+    );
+  }
 
   return (
     <span className="block min-h-[1.5em] font-mono text-sm text-aqua sm:text-[15px]">
